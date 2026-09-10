@@ -1,0 +1,48 @@
+asyncapi: 3.0.0
+
+info:
+  title: Regel OUL - Framework Async API
+  version: 1.0.0
+  description: Async API för OUL-baserade regler
+
+channels:
+  regel.oul.cancelled:
+    address: regel.oul.cancelled
+    messages:
+      RegelOulCancelledMessage:
+        $ref: "#/components/messages/RegelOulCancelledMessage"
+
+operations:
+  RegelOulCancelled:
+    action: receive
+    summary: Signalerar att ett regelflöde har avbrutits (t.ex. BPMN-timeout) och att
+      relaterad OUL-data ska städas upp
+    channel:
+      $ref: "#/channels/regel.oul.cancelled"
+
+components:
+  schemas:
+    RegelOulCancelledMessagePayloadData:
+      type: object
+      title: RegelOulCancelledMessagePayloadData
+      required:
+        - handlaggningId
+      properties:
+        handlaggningId:
+          type: string
+          format: uuid
+          description: Unikt ID som identifierar det handläggningsärende vars regeldata ska städas upp
+
+  messages:
+    RegelOulCancelledMessage:
+      payload:
+        title: RegelOulCancelledMessagePayload
+        allOf:
+          - $ref: "kogito-cloudevent.yaml#/components/schemas/KogitoCloudEvent"
+          - type: object
+            title: RegelOulCancelledMessagePayloadData
+            required:
+              - data
+            properties:
+              data:
+                $ref: "#/components/schemas/RegelOulCancelledMessagePayloadData"

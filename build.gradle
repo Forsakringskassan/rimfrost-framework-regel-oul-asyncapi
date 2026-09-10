@@ -1,0 +1,25 @@
+buildscript {
+  repositories {
+    mavenLocal()
+    gradlePluginPortal()
+    mavenCentral()
+    maven {
+      url = uri("https://maven.pkg.github.com/Forsakringskassan/repository")
+      credentials {
+        username = project.findProperty("GITHUB_ACTOR") ?: System.getenv("PACKAGES_RW_ACTOR")
+        password = project.findProperty("GITHUB_TOKEN") ?: System.getenv("PACKAGES_RW_TOKEN")
+      }
+    }
+  }
+
+  dependencies {
+    classpath "se.fk.gradle:gradle-conventions:1.18.1"
+  }
+}
+
+apply plugin: "se.fk.gradle.bundle-asyncapi"
+
+javaExtension {
+  javaVersion = 21
+}
+

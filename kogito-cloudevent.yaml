@@ -1,0 +1,64 @@
+asyncapi: 3.0.0
+info: { title: Kogito CloudEvent base, version: 1.0.0 }
+
+components:
+  schemas:
+    KogitoCloudEvent:
+      type: object
+      description: Base CloudEvent envelope including Kogito extensions
+      title: KogitoCloudEvent
+      properties:
+        specversion:
+          title: specVersion
+          type: string
+          enum: [ "1.0" ]
+        id:
+          type: string
+          format: uuid
+          description: CloudEvent unique identifier
+        source:
+          type: string
+          description: Source of the event
+        type:
+          type: string
+          description: Type of the event
+        time:
+          type: string
+          format: date-time
+          description: Time when the event occurred
+        kogitoparentprociid:
+          type: string
+          format: uuid
+          description: Parent process instance ID
+        kogitorootprocid:
+          type: string
+          description: Root process instance ID
+        kogitoproctype:
+          title: kogitoProcType
+          type: string
+          description: Process type
+          enum: [ "BPMN" ]
+        kogitoprocinstanceid:
+          type: string
+          format: uuid
+          description: Process instance ID
+        kogitoprocist:
+          type: string
+          description: Process instance state
+        kogitoprocversion:
+          type: string
+          description: Process version
+        kogitorootprociid:
+          type: string
+          format: uuid
+          description: Active Kogito addons for the process
+        kogitoprocid:
+          type: string
+          description: Process id
+        kogitoprocrefid:
+          type: string
+          format: uuid
+          description: Process Reference ID   
+        data:
+          type: object
+          description: Application-specific event payload
