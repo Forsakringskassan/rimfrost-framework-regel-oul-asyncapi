@@ -13,7 +13,7 @@ buildscript {
   }
 
   dependencies {
-    classpath "se.fk.gradle:gradle-conventions:1.18.1"
+    classpath "se.fk.gradle:gradle-conventions:1.18.3"
   }
 }
 
