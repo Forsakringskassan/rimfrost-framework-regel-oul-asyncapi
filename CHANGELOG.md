@@ -1,3 +1,9 @@
+## 0.0.2 (2026-09-13)
+
+### Bug Fixes
+
+-  **deps**  update dependency se.fk.gradle:gradle-conventions to v1.18.3 ([96aed](https://github.com/Forsakringskassan/rimfrost-framework-regel-oul-asyncapi/commit/96aedc5ceaa12fb) renovate[bot])  
+
 ## rimfrost-1_2 (2026-09-13)
 
 ### Bug Fixes
