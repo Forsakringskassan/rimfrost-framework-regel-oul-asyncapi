@@ -1,3 +1,15 @@
+## 0.0.3 (2026-10-27)
+
+### Bug Fixes
+
+-  Replace github workflows ([ed919](https://github.com/Forsakringskassan/rimfrost-framework-regel-oul-asyncapi/commit/ed9192e5f02d7d1) Lars Persson)  
+
+### Dependency updates
+
+- update forsakringskassan/.github digest to cbd74f1 ([e2b31](https://github.com/Forsakringskassan/rimfrost-framework-regel-oul-asyncapi/commit/e2b31c1d2438317) renovate[bot])  
+- update gradle to v9.8.1 ([a533b](https://github.com/Forsakringskassan/rimfrost-framework-regel-oul-asyncapi/commit/a533b03c112dcad) renovate[bot])  
+- update gradle to v9.8.0 ([47a9b](https://github.com/Forsakringskassan/rimfrost-framework-regel-oul-asyncapi/commit/47a9b74815caf3a) renovate[bot])  
+- pin forsakringskassan/.github action to bfb01f7 ([d815d](https://github.com/Forsakringskassan/rimfrost-framework-regel-oul-asyncapi/commit/d815d369df350ef) renovate[bot])  
 ## 0.0.2 (2026-09-13)
 
 ### Bug Fixes
