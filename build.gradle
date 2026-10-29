@@ -23,3 +23,23 @@ javaExtension {
   javaVersion = 21
 }
 
+dependencies {
+  testImplementation platform("org.junit:junit-bom:5.14.2")
+  testImplementation "org.junit.jupiter:junit-jupiter"
+}
+
+// Make generated models java.io.Serializable (Kogito JDBC persistence without proto marshaller
+// stores process variables with Java serialization). Modelina has no preset for this.
+// Map fields become HashMap, since Kogito's serialization fails on fields declared as Map.
+tasks.named("generateJarApi") {
+  doLast {
+    fileTree("src/generated-source/java") { include "**/*.java" }.each { f ->
+      f.text = f.text
+          .replaceFirst(
+              /(?m)^public class (\w+) \{$/,
+              'public class $1 implements java.io.Serializable {\n  private static final long serialVersionUID = 1L;\n')
+          .replaceAll(/\bMap</, 'java.util.HashMap<')
+    }
+  }
+}
+
