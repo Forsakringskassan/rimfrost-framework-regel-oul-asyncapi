@@ -1,3 +1,9 @@
+## 0.0.4 (2026-10-29)
+
+### Bug Fixes
+
+-  Patch generated classes to be serializable ([0331f](https://github.com/Forsakringskassan/rimfrost-framework-regel-oul-asyncapi/commit/0331f3c7bd8c384) Lars Persson)  
+
 ## 0.0.3 (2026-10-27)
 
 ### Bug Fixes
