@@ -28,13 +28,20 @@ dependencies {
   testImplementation "org.junit.jupiter:junit-jupiter"
 }
 
+// Where se.fk.gradle.bundle-asyncapi writes the generated models (the plugin doesn't expose it).
+// Relative to the project directory.
+def generatedSourceDir = "src/generated-source/java"
+
 // Make generated models java.io.Serializable (Kogito JDBC persistence without proto marshaller
 // stores process variables with Java serialization). Modelina has no preset for this.
 // Map fields become HashMap, since Kogito's serialization fails on fields declared as Map.
 tasks.named("generateJarApi") {
   doLast {
-    fileTree("src/generated-source/java") { include "**/*.java" }.each { f ->
+    fileTree(generatedSourceDir) { include "**/*.java" }.each { f ->
       f.text = f.text
+          .replaceFirst(
+              /(?m)^public class (\w+) implements ([\w, ]+) \{$/,
+              'public class $1 implements $2, java.io.Serializable {\n  private static final long serialVersionUID = 1L;\n')
           .replaceFirst(
               /(?m)^public class (\w+) \{$/,
               'public class $1 implements java.io.Serializable {\n  private static final long serialVersionUID = 1L;\n')
@@ -43,3 +50,9 @@ tasks.named("generateJarApi") {
   }
 }
 
+
+// Lets GeneratedModelSerializableTest find every generated model. Relative to the project
+// directory (the test working directory), so the build cache stays relocatable.
+tasks.named("test") {
+  systemProperty "asyncapi.generated.source.dir", generatedSourceDir
+}
