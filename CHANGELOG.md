@@ -1,3 +1,13 @@
+## 0.0.5 (2026-11-17)
+
+### Bug Fixes
+
+-  **deps**  update dependency org.junit:junit-bom to v5.14.4 ([c724a](https://github.com/Forsakringskassan/rimfrost-framework-regel-oul-asyncapi/commit/c724ab20107f0d8) renovate[bot])  
+-  Improve serializable patch and test ([9406d](https://github.com/Forsakringskassan/rimfrost-framework-regel-oul-asyncapi/commit/9406d36d9063263) Lars Persson)  
+
+### Dependency updates
+
+- update forsakringskassan/.github digest to cbc0db8 ([f928f](https://github.com/Forsakringskassan/rimfrost-framework-regel-oul-asyncapi/commit/f928fd92a314524) renovate[bot])  
 ## 0.0.4 (2026-10-29)
 
 ### Bug Fixes
